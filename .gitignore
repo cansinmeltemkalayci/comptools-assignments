@@ -1,1 +1,11 @@
 comptools_ass1_files/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+.idea
+.vscode
+README.md
