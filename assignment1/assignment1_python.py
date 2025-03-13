@@ -6,6 +6,7 @@ import matplotlib.dates as mdates
 import os
 
 # Create the outputs directory if it doesn't exist
+# Dosya artık assignment1 klasörü içinde olduğu için outputs klasörü de burada olmalı
 os.makedirs('outputs', exist_ok=True)
 
 # Load the dataset directly from the URL
