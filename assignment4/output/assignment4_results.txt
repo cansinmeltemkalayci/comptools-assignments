@@ -1,0 +1,118 @@
+1. Data Generating Process (DGP)
+--------------------------------------------------
+True informative features indices: [np.int64(0), np.int64(2), np.int64(4), np.int64(10), np.int64(15), np.int64(17), np.int64(19), np.int64(23), np.int64(44), np.int64(45)]
+
+Non-zero coefficients:
+    feature_index  true_coefficient
+0               0         -5.038946
+2               2         -2.678609
+4               4         -1.823795
+10             10         -1.610677
+15             15         -2.561768
+17             17          0.393326
+19             19          1.786967
+23             23          5.059156
+44             44         -0.493334
+45             45          5.933621
+
+2. Train-Test Split
+--------------------------------------------------
+Training set size: (140, 50)
+Test set size: (60, 50)
+
+3. Implementing Lasso Regression
+--------------------------------------------------
+Lasso uses the L1 norm to set some coefficients exactly to zero.
+This automatically performs feature selection.
+
+Alpha = 0.0001
+  Non-zero coefficients: 50
+  Train MSE: 0.6324, Test MSE: 1.4795
+  Train R²: 0.9952, Test R²: 0.9872
+
+Alpha = 0.001
+  Non-zero coefficients: 50
+  Train MSE: 0.6324, Test MSE: 1.4605
+  Train R²: 0.9952, Test R²: 0.9874
+
+Alpha = 0.01
+  Non-zero coefficients: 49
+  Train MSE: 0.6408, Test MSE: 1.3003
+  Train R²: 0.9951, Test R²: 0.9888
+
+Alpha = 0.1
+  Non-zero coefficients: 19
+  Train MSE: 0.9011, Test MSE: 1.0314
+  Train R²: 0.9931, Test R²: 0.9911
+
+Alpha = 0.5
+  Non-zero coefficients: 8
+  Train MSE: 3.3757, Test MSE: 3.0970
+  Train R²: 0.9743, Test R²: 0.9733
+
+Alpha = 1.0
+  Non-zero coefficients: 8
+  Train MSE: 8.9801, Test MSE: 9.0886
+  Train R²: 0.9316, Test R²: 0.9216
+
+4. Implementing Ridge Regression
+--------------------------------------------------
+Ridge uses the L2 norm to shrink coefficients towards zero,
+but it typically doesn't set them exactly to zero.
+
+Alpha = 0.0001
+  Coefficients < 0.001: 0
+  Train MSE: 0.6324, Test MSE: 1.4816
+  Train R²: 0.9952, Test R²: 0.9872
+
+Alpha = 0.001
+  Coefficients < 0.001: 0
+  Train MSE: 0.6324, Test MSE: 1.4816
+  Train R²: 0.9952, Test R²: 0.9872
+
+Alpha = 0.01
+  Coefficients < 0.001: 0
+  Train MSE: 0.6324, Test MSE: 1.4812
+  Train R²: 0.9952, Test R²: 0.9872
+
+Alpha = 0.1
+  Coefficients < 0.001: 0
+  Train MSE: 0.6324, Test MSE: 1.4778
+  Train R²: 0.9952, Test R²: 0.9873
+
+Alpha = 0.5
+  Coefficients < 0.001: 0
+  Train MSE: 0.6343, Test MSE: 1.4666
+  Train R²: 0.9952, Test R²: 0.9873
+
+Alpha = 1.0
+  Coefficients < 0.001: 1
+  Train MSE: 0.6402, Test MSE: 1.4614
+  Train R²: 0.9951, Test R²: 0.9874
+
+5. Visualizing Coefficient Recovery
+--------------------------------------------------
+We visualize how well the Lasso and Ridge methods estimate the true coefficients.
+
+6. Cross-Validation for Optimal Alpha
+--------------------------------------------------
+We find the best alpha value using K-fold cross-validation.
+Best Lasso alpha: 0.078476
+Best Ridge alpha: 0.885867
+
+Final Model Test Performance:
+  Lasso (alpha=0.078476)
+    Test MSE: 1.0394, Test R²: 0.9910
+    Non-zero coefficients: 23 of 50
+  Ridge (alpha=0.885867)
+    Test MSE: 1.4617, Test R²: 0.9874
+    Small coefficients (< 0.001): 1 of 50
+
+7. Summary
+--------------------------------------------------
+In this study:
+1. We applied Lasso and Ridge regression methods to sparse datasets.
+2. We observed that Lasso can produce exactly zero coefficients, thus performing feature selection.
+3. We saw that Ridge shrinks coefficients towards zero, but typically doesn't set them exactly to zero.
+4. We found the optimal regularization strength for both models using cross-validation.
+5. We evaluated Lasso's ability to select the truly informative variables.
